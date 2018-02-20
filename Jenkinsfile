@@ -27,7 +27,11 @@ node {
     stage('Archive') {
         junit allowEmptyResults: true, testResults: '**/target/**/TEST*.xml'
     }
-
+    stage('SonarQube Scanner') {
+        withSonarQubeEnv {
+            
+        }
+    }
     stage('Deploy') {
         sh '''
             echo "deploying"
